@@ -2,7 +2,6 @@ const base = document.getElementById('base');
 
 //////////////////////////////////////////////////
 
-
 // function AddJobIcons(string, Job, Name='None') {
 function AddColumnHead(parent, i, j, k = 0) {
     job = (i < 2 ? JOBS[i][j] : JOBS[i][j][k])
@@ -34,14 +33,10 @@ function addJobEventListeners(div, member, row, i, j, k = 0) {
     let col = (i < 2 ? i * 10 + j + 1 : i * 100 + j * 10 + k);
 
     div.addEventListener('click', () => {
-        // updateAppContent(member, job, row, col);
         if (i < 2) member.jobs[i][j] ^= true;
         else member.jobs[i][j][k] ^= true;
-        // var result = (i < 2) ? member.jobs[i][j] : member.jobs[i][j][k];
         div.classList.toggle("cant");
-        // div.style.opacity = result ? '1' : '0.3';
-        // UpdateRoles();
-        // console.log(`Member: ${member.name}, Job: ${JOBS[i][j]}/${member.jobs[i][j][k]}, Row: ${row}, Column: ${col}`);
+        UpdateRoles();
     });
     div.addEventListener('mouseenter', () => {
         div.parentElement.querySelector('.member').style.backgroundColor = '#987';
@@ -55,10 +50,6 @@ function addJobEventListeners(div, member, row, i, j, k = 0) {
     });
 }
 
-function updateAppContent(member, job, row, col) {
-    const appContent = document.getElementById('app');
-    appContent.innerHTML = `Member: ${member}, Job: ${job}, Row: ${row}, Column: ${col}`;
-}
 
 // JOB COLS
 for (let i = 0; i < JOBS.length; i++) {

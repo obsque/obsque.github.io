@@ -7,19 +7,68 @@
   <script src="job_color.js"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="job_icons.css">
+  <link rel="stylesheet" href="apps.css">
 </head>
 <body>
-  <div class="title" id="a"><h1><span>뭔가 준비중</span></h1>
-    <!-- <script src="title.js" defer></script> -->
+  <div class="title" id="main">
+    <h1><span>뭔가 준비중</span></h1>
+    <script src="title.js" defer></script>
   </div>
-  <div class="content" id="1">
+  <div class="content" id="data">
     <div id="base">
       <div class="column-head name" style="grid-row: -2;">name</div>
     </div>
   </div>
+  <p></p>
 
+  <div class="content" id="entry">
+    <div class="title" id="b" style="text-align: center;">
+      <h2><span>역할별 후보</span></h2>
+    </div>
+    <div id="app">
+      <div class="column-head row_head black-han-sans-regular" style="grid-row: -3;">
+        <span class="black-han-sans-regular">역할</span>
+      </div>
+      <div class="row_head nanum-gothic-regular" style="grid-row: 1; ">후　　　보</div>
+    </div>
+  </div>
+  <p></p>
+  <div class="wrapper">
+    <div class="rollbutton">
+        <input type="button" value="시작" onclick="start();" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="중지" onclick="stop();" />
+    </div>
+  </div><div class="ran">
+    <br>
+    <h3 id="ran">??, &nbsp;??, &nbsp;??, &nbsp;??, &nbsp;??, &nbsp;??</h3>
+    <br>
+  </div>
+  <div style="width:100%; display: grid;">
+    <div class="title" style="position: relative; align-items: center; width: 100px; margin: auto;">
+      <span>굴리기</span>
+      <div class="display-right">▶</div>
+      <div id="progress" style="width: 00px;"></div>
+    </div>
+  </div>
+  <div class="content" style="display: block;">
+    <div class="title" style="text-align: center;">
+      <h1><span class="black-han-sans-regular">★　당　첨　★</span></h1>
+    </div>
+    <div id="result">
+      <div class="column-head black-han-sans-regular" style="grid-row: -3;">
+        <span class="black-han-sans-regular">역할</span>
+      </div>
+      <div id="end" class="row_head black-han-sans-regular" style="grid-row: 1;">
+        <span class="black-han-sans-regular">당첨자</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="apps.js"></script>
   <script src="base.js"></script>
 
+  <script src="lottery.js"></script>
 
   <script>
   </script>
