@@ -1,0 +1,85 @@
+[data-class],[data-job] {
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -.05em;
+    display: inline-flex;
+    align-items: center
+}
+
+[data-class]:before,[data-job]:before {
+    content: "";
+    width: 28px;
+    height: 28px;
+    background-image: url(https://image.ff14.co.kr/html2/2024_guide/img/common/icon_set1.png?ee87d8def8563223733bfae891d03fc3);
+    background-position: 0 -90px;
+    margin-left: 2px;
+    margin-top: 2px;
+}
+
+[data-job^="1"]:before {
+    background-position-y: -90px
+}
+
+[data-job^="2"]:before {
+    background-position-y: -120px
+}
+
+[data-job^="3_1"]:before {
+    background-position-y: -150px
+}
+
+[data-job^="3_2"]:before {
+    background-position-y: -180px
+}
+
+[data-job^="3_3"]:before {
+    background-position-y: -210px
+}
+
+[data-class$=_1]:before,[data-job$=_1]:before {
+    background-position-x: -30px
+}
+
+[data-class$=_2]:before,[data-job$=_2]:before {
+    background-position-x: -60px
+}
+
+[data-class$=_3]:before,[data-job$=_3]:before {
+    background-position-x: -90px
+}
+
+[data-class$=_4]:before,[data-job$=_4]:before {
+    background-position-x: -120px
+}
+
+[data-class$=_5]:before,[data-job$=_5]:before {
+    background-position-x: -150px
+}
+
+[data-class$=_6]:before,[data-job$=_6]:before {
+    background-position-x: -180px
+}
+
+[data-class$=_7]:before,[data-job$=_7]:before {
+    background-position-x: -210px
+}
+
+[data-class$=_8]:before,[data-job$=_8]:before {
+    background-position-x: -240px
+}
+
+[data-job="3_1"]:before,[data-job="3_2"]:before,[data-job="3_3"]:before {
+    background-position-x: 0
+}
+
+[data-class^="1"]:before {
+    background-position-y: -240px
+}
+
+[data-class^="2"]:before {
+    background-position-y: -270px
+}
+
+[data-class^="3"]:before {
+    background-position-y: -300px
+}

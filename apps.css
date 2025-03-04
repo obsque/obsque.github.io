@@ -1,0 +1,36 @@
+#app {
+    position: relative;
+    margin : 0 auto;
+    display: inline-grid;
+    border: solid 1px #777;
+    width: fit-content;
+  }
+.row_head {
+    display: flex;
+}
+.role_block {
+    display: flow;
+    grid-row: 1;
+}
+.members {
+    margin : 5px;
+    border : #777 1px solid;
+    border-radius: 6px;
+    background-color: #555;
+
+    &:hover {
+        background-color: #987;
+        transition: 0.3s;
+    }
+}
+.member_name {
+    text-align: center;
+}
+.jobs {
+    display: flex;
+    align-items: center;
+
+    * {
+        margin : auto;
+    }
+}

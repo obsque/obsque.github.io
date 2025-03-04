@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic&display=swap');
+.nanum-gothic-regular {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.black-han-sans-regular {
+  font-family: "Black Han Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background-color: #333;
+  color: whitesmoke;
+  /* font-family: "\B9D1\C740   \ACE0\B515",Malgun Gothic,Pretendard,Segoe UI,\\B3CB\C6C0,Dotum,Tahoma,sans-serif; */
+  font-size: large;
+  text-shadow: #000 0px 0px 5px;
+  display: grid;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+div {
+  box-sizing: border-box;
+  align-content: center;
+}
+:hover {
+  transition-duration: 0.2s;
+}
+
+.content {
+  margin: 0 auto;
+  position: relative;
+  min-width: 800px;
+}
+
+#title {
+  /* display: hidden; */
+  background-color: #333;
+  z-index: 10;
+}
+h1 {
+  white-space: nowrap;
+  text-align: center;
+  span {
+    text-shadow: #FDA 0px 0px 5px;
+    text-align: center;
+  }
+}
+#base {
+  margin: 0 auto;
+  position: relative;
+  display: inline-grid;
+  border: solid 1px #777;
+  width: fit-content;
+
+}
+.column-head {
+  grid-row: -2;
+  /* position: sticky;
+  top: 0; */
+  text-align: center;
+  align-content: center;
+  background-color: #333;
+  z-index: 10;
+  border-left: solid 1px #666;
+  border-bottom: solid 1px #ccc;
+  font-family: Consolas, 'Courier New', Courier, monospace;
+}
+.block {
+  display: contents;
+}
+.member {
+  grid-column: -2;
+  display: grid;
+  width: 8em;
+
+  span {
+    font-size: 1em;
+    text-align: center;
+    padding: 6px;
+
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  &:hover{
+    background-color: #987;
+    border-radius: 10%;
+  }
+  /* span:hover {
+    background-color: #987;
+    border-radius: 10%;
+    transition-duration: 0.2s;
+  } */
+}
+.job {
+  &.cant {
+    opacity: 0.3;
+  }
+  &:hover {
+    background-color: #CCC;
+  }
+}
+
+.line {
+    border-left: #666 dashed 1px;
+    grid-row: -2 / 99;
+}
+.row {
+  position: absolute;
+  width: 100%;
+  border-top: 1px #aaa;
+  border-top-style: inset;
+}
+.role-line {
+  border-left: inset 2px;
+  grid-row: -2 / 99;
+}
+
+.role-col {
+  /* display: ; */
+  grid-row: -3;
+  align-items: center;
+  vertical-align: middle;
+  border-left: outset 2px rgba(100,100,100,200);
+}
+.job-col {
+  display: grid;
+  align-items: center;
+  width: 30px;
+  margin: 1px;
+
+  span {
+      text-shadow: #000 0px 0px 5px;
+  }
+}
+
+
+/* colorgroup {
+  pwhite #fff;
+  pred #A33;
+  PYELLOW #AA0;
+  pgreen #0A0;
+  pblue #0AA;
+  pblue2 #66F;
+  ppurple #A3A;
+} */
+/* h1 span {
+  background-color: #fff;
+  animation: colorChange 5s infinite;
+}
+@keyframes colorChange {
+  0% { color: #A33; }
+  16% { color: #AA0; }
+  33% { color: #0A0; }
+  50% { color: #0AA; }
+  66% { color: #66F; }
+  83% { color: #A3A; }
+  100% { color: #A33; }
+} */
+
+/* \00a0"; */
+/*
+h1 span+span::before {
+  padding: 0.1em;
+  color: #aaa;
+  content: "/";
+} */
