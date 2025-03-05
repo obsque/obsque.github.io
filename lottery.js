@@ -116,8 +116,7 @@ function CreateCombinations(progress=0) {
     // const combination = [[],[],[],[],[],];
     // CreateCombinationsTH
     for (let t1 = 0; t1 < entry[0].length; t1++) {
-        console.log('loop: t1, ', t1);
-        let temp = new Combination(selected);
+        let temp = new Combination([...selected]);
         temp.InsertM(0, entry[0][t1]);
 
         for (let t2 = t1 + 1; t2 < entry[0].length; t2++) {
