@@ -149,62 +149,123 @@ function CreateCombinations(progress=0) {
 }
 CreateCombinations();
 
+let random = Math.floor(Math.random() * combinations.length);
+// console.log(combinations[random].combination[0]
+//     , combinations[random].combination[1]
+//     , combinations[random].combination[2]
+//     , combinations[random].combination[3]
+//     , combinations[random].combination[4]);
+DisplayOnResult(random);
 
 function DisplayOnResult(index) {
+    for (let i = 0; i < cols.length; i++) {
+
+        const role_block = document.getElementsByClassName(`role_block ${roles[i]}`)[1];
+        role_block.innerHTML = '';
+
+        for (let m = 0; m < combinations[index].combination[i].length; m++) {
+            let member_idx = combinations[index].combination[i][m];
+            // const member_block = document.getElementById(`member_${i}`);
+            const member_block = document.createElement('div');
+            member_block.className = `members`;
+
+            const name = document.createElement('div');
+            name.innerText = members[member_idx].name;
+            name.className = 'member_name';
+            member_block.appendChild(name);
+
+            const jobs_block = document.createElement('div');
+            jobs_block.className = 'jobs';
+
+            if (i < 2) {
+                for (let j = 0; j < JOBS[i].length; j++) {
+                    if (members[member_idx].jobs[i][j])
+                    AddIcon(jobs_block, i, j + 1);
+                }
+            }
+            else {
+                let j = i - 2;
+                for (let k = 0; k < JOBS[2][j].length; k++) {
+                    if (members[member_idx].jobs[2][j][k])
+                    AddIcon(jobs_block, 2, j, k + 1);
+                }
+            }
+
+            member_block.appendChild(jobs_block);
+
+            role_block.appendChild(member_block);
+        }
+    }
 
 }
 
-function execute() {
-    let random = Math.floor(Math.random() * combinations.length);
-    console.log(combinations[random].combination[0]
-        , combinations[random].combination[1]
-        , combinations[random].combination[2]
-        , combinations[random].combination[3]
-        , combinations[random].combination[4]);
-    // DisplayOnResult(random);
-}
+var i = 0;
+var elem = document.getElementById("myBar");
+var leftover = document.getElementById("leftover");
+var blink = document.getElementById("blink");
+var progress = document.getElementById("progress");
+function ROLL() {
+    if (i == 0)
+    {
+        UpdateRoles();
 
-let isStart = false;
+        const title = document.getElementById("congrat");
+        title.style.opacity = 0;
+        // title.innerText = '';
 
-function time() {
-    const rept = [];
-    while (rept.length < 1) {
-        const selected = [];
-        while (selected.length < 6) {
-            const num = parseInt(Math.random() * 45) + 1;
-            if (selected.indexOf(num) == -1) {
-                selected.push(num);
-                selected.sort((a, b) => a - b)
+        i = 1;
+        elem.style.opacity = 0;
+        leftover.style.opacity = 0;
+        progress.style.opacity = 0.9;
+
+        var width = 0;
+        elem.style.width = width + "%";
+        leftover.style.width = width + "%";
+
+        var running = setInterval(frame2, 50);
+
+        function frame2 () {
+            elem.style.opacity = 1;
+            leftover.style.opacity = 1;
+
+            let random = Math.floor(Math.random() * combinations.length);
+            DisplayOnResult(random);
+
+            if (width >= 100) {
+                i = 0;
+                clearInterval(running);
+                progress.style.opacity = 0;
+                title.style.opacity = 1;
+                // const span = document.createElement('span');
+                // span.className = "black-han-sans-regular";
+                // span.innerText = "★　당　첨　★";
+
+            } else {
+                blink.style.display='none';
+                leftover.style.width = width + "%";
+
+                var rate_c = 0.2;
+                let random = Math.random();
+
+                let diff = 0;
+                let unit = 3;
+
+                if ( width > 20 && random < rate_c ) {
+                    // width = width *(1 - Math.random()*0.3)
+                    diff = -10 * Math.random();
+                    if ( diff < -3 )
+                        blink.style.display='block';
+                }
+                else
+                    diff = Math.random() * unit;
+
+                width += diff;
+                width = Math.min(100.0, width);
+
+                elem.style.width = width + "%";
+                const percent = document.getElementById("percent");
+                percent.innerText = width.toFixed(3).padStart(6, ' ') + " %";
             }
         }
-        // console.log(selected)
-
-        let hasNum = false;
-        for (const lotto of rept) {
-            if (lotto == selected.toString()) {
-                hasNum = true;
-                break;
-            }
-        }
-        if (!hasNum) rept.push(selected);
-    }
-    // console.log(rept)
-    document.getElementById("ran").innerHTML = rept
-}
-
-var roll = null;
-
-function start() {
-    if (!isStart) {
-        isStart = true;
-        // time();
-        execute();
-        roll = setInterval(execute, 1000)
-    }
-}
-function stop() {
-    if (roll != null) {
-        clearInterval(roll);
-        isStart = false;
     }
 }

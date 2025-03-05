@@ -19,7 +19,10 @@
 .role_block {
     display: flow;
     grid-row: 1;
-    /* width: 120px; */
+    width: 140px;
+    &.melee, &.ranged {
+        width: 120px;
+    }
 }
 #end {
     min-height: 8em;
@@ -41,6 +44,7 @@
 .jobs {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     * {
         margin : auto;
@@ -51,10 +55,25 @@
     min-height: 8em;
 }
 
+.display-left {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%,-50%);
+    -ms-transform: translate(0%,50%)
+}
 .display-right {
     position: absolute;
     top: 50%;
     right: 0%;
     transform: translate(0%,-50%);
     -ms-transform: translate(0%,-50%)
+}
+
+button {
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    align-items: center;
+    margin: 0 auto;
 }

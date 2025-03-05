@@ -116,6 +116,6 @@ function UpdateRoles() {
             }
         }
     }
-    console.log(entry);
+    // console.log(entry);
 }
 UpdateRoles();
