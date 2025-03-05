@@ -108,10 +108,11 @@ for (let m =0; m < members.length; m++) {
     {
         const span = document.createElement('span');
         // span.textContent = member;
-        span.textContent = `파티원 ${m + 1}: ` + members[m].name;
+        span.textContent = members[m].name;
         span.contentEditable = true;
         span.addEventListener('input', (e) => {
             members[m].name = e.target.innerText;
+            UpdateRoles();
         });
         member_div.appendChild(span);
     }

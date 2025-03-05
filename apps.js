@@ -53,11 +53,6 @@ for (let i = 0; i < ROLE_JOB.length; i++) {
     }
 }
 
-const app = document.getElementById('app');
-const appPosition = app.getBoundingClientRect().top;
-const screenPosition = window.innerHeight;
-
-console.log(appPosition, screenPosition);
 
 
 //////////////////////////////////////////////////

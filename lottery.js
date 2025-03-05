@@ -111,11 +111,13 @@ function CombinationMelee2(temp) {
 }
 
 function CreateCombinations(progress=0) {
+    combinations = [];
     let selected = [0, 0, 0, 0, 0, 0, 0, 0];
     // const combination = [[],[],[],[],[],];
     // CreateCombinationsTH
-    for (let t1 = 0; t1 < entry[0].length - 1; t1++) {
-        let temp = new Combination(selected);
+    for (let t1 = 0; t1 < entry[0].length; t1++) {
+        console.log('loop: t1, ', t1);
+        let temp = new Combination([...temp.selected], temp.combination.map(arr => [...arr]), temp.count);
         temp.InsertM(0, entry[0][t1]);
 
         for (let t2 = t1 + 1; t2 < entry[0].length; t2++) {
@@ -208,6 +210,7 @@ function ROLL() {
     if (i == 0)
     {
         UpdateRoles();
+        CreateCombinations();
 
         const title = document.getElementById("congrat");
         title.style.opacity = 0;

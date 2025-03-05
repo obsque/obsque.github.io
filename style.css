@@ -114,6 +114,7 @@ h1, h2, h3 {
   } */
 }
 .job {
+  z-index: 1;
   &.cant {
     opacity: 0.3;
   }
