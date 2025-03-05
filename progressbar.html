@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<style>
+#myProgress {
+  display: grid;
+  max-width: 600px;
+  background-color: #ddd;
+}
+
+#myBar, #leftover {
+  /* position: absolute; */
+  /* width: 1px; */
+  grid-area: 1/1;
+  height: 30px;
+  background-color: #04AA6D;
+  transition: 0.1s linear;
+  z-index: 2;
+}
+#leftover {
+  background-color: #e023d7;
+  transition: 0.3s linear;
+  /* transition: 0.2s cubic-bezier(.22,.61,.36,1); */
+  z-index: 1;
+}
+#blink {
+  grid-area: 1/1;
+  /* height: 30px; */
+  height: 100%;
+  width: 100%;
+  animation: blink 0.6s cubic-bezier(.22,.61,.36,1);
+}
+@keyframes blink {
+    0% { z-index: 10; background-color: #f00; }
+    100% { opacity: 0; display: none; transform: scaleY(150%) scaleX(110%); }
+}
+#effect {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  div {
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    margin: auto;
+    background-color: #fff;
+    opacity: 0;
+    /* width: ; */
+    /* z-index: 11; */
+    animation: m1 2s 2s linear infinite;
+    /* animation-delay: 1s; */
+  }
+}
+@keyframes m1 {
+    0% { left: 0px; }
+    30% { left: 30%; opacity: 0.6;}
+    90% { left: 100%; transform: translateX(-100%); opacity: 0.6;}
+    100% { opacity: 0;}
+}
+
+</style>
+<body>
+
+<h1>JavaScript Progress Bar</h1>
+
+<div id="myProgress">
+  <div id="blink" style="display: none;"></div>
+  <div id="leftover"></div>
+  <div id="myBar">
+    <div id="effect"><div></div></div>
+  </div>
+</div>
+
+<br>
+<button onclick="move2()">Click Me</button>
+
+<script>
+    var i = 0;
+    var elem = document.getElementById("myBar");
+
+    function move() {
+        if (i == 0) {
+            i = 1;
+            var width = 1;
+            var id = setInterval(frame, 10);
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                    i = 0;
+                } else {
+                    width++;
+                    elem.style.width = width + "%";
+                }
+            }
+        }
+    }
+    var leftover = document.getElementById("leftover");
+    var blink = document.getElementById("blink");
+    function move2() {
+        if (i == 0)
+        {
+            i = 1;
+            var width = 0;
+            elem.style.width = width + "%";
+            leftover.style.width = width + "%";
+            var running = setInterval(frame2, 100);
+
+            function frame2 () {
+                if (width >= 100) {
+                    clearInterval(running);
+                    i = 0;
+                } else {
+                    leftover.style.width = width + "%";
+                    let rate_c = 0.2;
+                    let random = Math.random();
+
+                    let unit = 4;
+                    let diff = 0;
+                    blink.style.display='none';
+
+                    if ( width > 20 && random < 0.2 ) {
+                        // width = width *(1 - Math.random()*0.3)
+                        diff = -10 * Math.random();
+                        if ( diff < -3 )
+                            blink.style.display='block';
+                    }
+                    else
+                        diff = Math.random() * unit;
+                    
+                    width += diff;
+                    // let unit =
+                    //         : Math.random() * dev;
+                    // width = Math.max(0, width + unit);
+
+                    // let unit = (random < 0.2)
+                            // ? width *(0.8 - Math.random()*0.2)
+
+                    elem.style.width = Math.min(100,width) + "%";
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
