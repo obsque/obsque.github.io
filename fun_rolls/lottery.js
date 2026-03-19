@@ -48,7 +48,7 @@ function CombinationRange1c1(temp) {
         if (temp.selected[entry[r][c1]])
             continue;
         let temp1 = new Combination([...temp.selected], temp.combination.map(arr => [...arr]), temp.count);
-        temp1.InsertM(4, entry[r][c1]);
+        temp1.InsertM(r, entry[r][c1]);
         CombinationsCaster1(temp1);
     }
 }
@@ -159,6 +159,7 @@ let random = Math.floor(Math.random() * combinations.length);
 DisplayOnResult(random);
 
 function DisplayOnResult(index) {
+    // console.log(combinations[index])
     for (let i = 0; i < cols.length; i++) {
 
         const role_block = document.getElementsByClassName(`role_block ${roles[i]}`)[1];
@@ -200,12 +201,15 @@ function DisplayOnResult(index) {
 
 }
 
-var i = 0;
-var elem = document.getElementById("myBar");
-var leftover = document.getElementById("leftover");
-var blink = document.getElementById("blink");
-var progress = document.getElementById("progress");
+let i = 0;
+const elem = document.getElementById("myBar");
+const leftover = document.getElementById("leftover");
+const blink = document.getElementById("blink");
+const progress = document.getElementById("progress");
 function ROLL() {
+    const critics = document.getElementById("critics").value;
+    console.log(critics);
+
     if (i == 0)
     {
         UpdateRoles();
@@ -216,11 +220,12 @@ function ROLL() {
         // title.innerText = '';
 
         i = 1;
+        let critical_count = 0;
         elem.style.opacity = 0;
         leftover.style.opacity = 0;
         progress.style.opacity = 0.9;
 
-        var width = 0;
+        var width = 100;
         elem.style.width = width + "%";
         leftover.style.width = width + "%";
 
@@ -241,6 +246,9 @@ function ROLL() {
                 // const span = document.createElement('span');
                 // span.className = "black-han-sans-regular";
                 // span.innerText = "★　당　첨　★";
+                let width = 0;
+                elem.style.width = width + "%";
+                leftover.style.width = width + "%";
 
             } else {
                 blink.style.display='none';
@@ -257,6 +265,10 @@ function ROLL() {
                     diff = -10 * Math.random();
                     if ( diff < -3 )
                         blink.style.display='block';
+
+                    if ( width > 33 && critical_count > 0) {
+                        critical_count--;
+                    }
                 }
                 else
                     diff = Math.random() * unit;
